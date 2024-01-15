@@ -1,18 +1,19 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Next.js Starter Blog',
-  author: 'Tails Azimuth',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  title: 'duynguyen.ca - Technical blog, tutorials, and notes',
+  author: 'Duy Nguyen',
+  headerTitle: 'duynguyen.ca',
+  description:
+    'My second brain, where I store notes, rants, bits and bobs about web development, neovim, and other technical topics.',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
-  siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',
+  siteUrl: 'https://duynguyen.ca',
+  siteRepo: 'https://github.com/duy-the-developer/duynguyen.ca',
   siteLogo: '/static/images/logo.png',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
-  email: 'address@yoursite.com',
-  github: 'https://github.com',
+  email: 'duythedeveloper@gmail.com',
+  github: 'https://github.com/duy-the-developer',
   twitter: 'https://twitter.com/Twitter',
   facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
