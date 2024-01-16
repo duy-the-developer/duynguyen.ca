@@ -1,10 +1,10 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'duynguyen.ca - Technical blog, tutorials, and notes',
+  title: 'Duy Nguyen',
   author: 'Duy Nguyen',
   headerTitle: 'duynguyen.ca',
   description:
-    'My second brain, where I store notes, rants, bits and bobs about web development, neovim, and other technical topics.',
+    'Add i18n support to your Next.js app? Build a custom React hook? Center a div? Find anything web development related. Peruse past projects, try tutorials, and search snippets. Accessible. Open Source. Forever Free.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://duynguyen.ca',

@@ -1,77 +1,98 @@
 'use client'
 
-import { useState } from 'react'
-import Link from './Link'
+import * as React from 'react'
+import Link, { LinkProps } from 'next/link'
+import { useRouter } from 'next/navigation'
+
 import headerNavLinks from '@/data/headerNavLinks'
+import { cn } from '../lib/utils'
+import { Button } from './ui/button'
+import { ScrollArea } from './ui/scroll-area'
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet'
+import Logo from './Logo'
 
-const MobileNav = () => {
-  const [navShow, setNavShow] = useState(false)
-
-  const onToggleNav = () => {
-    setNavShow((status) => {
-      if (status) {
-        document.body.style.overflow = 'auto'
-      } else {
-        // Prevent scrolling
-        document.body.style.overflow = 'hidden'
-      }
-      return !status
-    })
-  }
+export default function MobileNav() {
+  const [open, setOpen] = React.useState(false)
 
   return (
-    <>
-      <button aria-label="Toggle Menu" onClick={onToggleNav} className="sm:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-          className="h-8 w-8 text-gray-900 dark:text-gray-100"
+    <Sheet open={open} onOpenChange={setOpen}>
+      <SheetTrigger asChild>
+        <Button
+          variant="ghost"
+          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-            clipRule="evenodd"
-          />
-        </svg>
-      </button>
-      <div
-        className={`fixed left-0 top-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out dark:bg-gray-950 dark:opacity-[0.98] ${
-          navShow ? 'translate-x-0' : 'translate-x-full'
-        }`}
-      >
-        <div className="flex justify-end">
-          <button className="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu" onClick={onToggleNav}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              className="text-gray-900 dark:text-gray-100"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-        <nav className="fixed mt-8 h-full">
-          {headerNavLinks.map((link) => (
-            <div key={link.title} className="px-12 py-4">
-              <Link
-                href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
-                onClick={onToggleNav}
-              >
-                {link.title}
-              </Link>
-            </div>
-          ))}
-        </nav>
-      </div>
-    </>
+          <svg
+            strokeWidth="1.5"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+          >
+            <path
+              d="M3 5H11"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M3 12H16"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M3 19H21"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </svg>
+          <span className="sr-only">Toggle Menu</span>
+        </Button>
+      </SheetTrigger>
+      <SheetContent side="left" className="pr-0">
+        <MobileLink href="/" className="flex items-center" onOpenChange={setOpen}>
+          <Logo />
+        </MobileLink>
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+          <div className="flex flex-col space-y-3">
+            {headerNavLinks.map(
+              (item) =>
+                item.href && (
+                  <MobileLink key={item.href} href={item.href} onOpenChange={setOpen}>
+                    {item.title}
+                  </MobileLink>
+                )
+            )}
+          </div>
+        </ScrollArea>
+      </SheetContent>
+    </Sheet>
   )
 }
 
-export default MobileNav
+interface MobileLinkProps extends LinkProps {
+  onOpenChange?: (open: boolean) => void
+  children: React.ReactNode
+  className?: string
+}
+
+function MobileLink({ href, onOpenChange, className, children, ...props }: MobileLinkProps) {
+  const router = useRouter()
+  return (
+    <Link
+      href={href}
+      onClick={() => {
+        router.push(href.toString())
+        onOpenChange?.(false)
+      }}
+      className={cn(className)}
+      {...props}
+    >
+      {children}
+    </Link>
+  )
+}

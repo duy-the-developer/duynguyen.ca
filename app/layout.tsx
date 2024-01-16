@@ -10,6 +10,7 @@ import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
+import NewHeader from '@/components/NewHeader'
 
 const lora = Lora({
   subsets: ['latin'],
@@ -82,15 +83,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-stone-200 text-stone-900 antialiased dark:bg-stone-900 dark:text-stone-200">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
-          <SectionContainer>
-            <div className="flex h-screen flex-col justify-between font-sans">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="mb-auto">{children}</main>
-              </SearchProvider>
-              <Footer />
-            </div>
-          </SectionContainer>
+          <div>
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <NewHeader />
+              <main className="mb-auto">
+                <SectionContainer>{children}</SectionContainer>
+              </main>
+            </SearchProvider>
+            <Footer />
+          </div>
         </ThemeProviders>
       </body>
     </html>
