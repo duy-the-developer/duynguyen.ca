@@ -4,6 +4,17 @@
   @apply font-medium;
 }
 
+/* body::before, */
+/* body::after { */
+/*   content: ''; */
+/*   @apply absolute inset-0 z-[-1] h-full w-full opacity-30; */
+/* } */
+/**/
+/* body::before { */
+/*   background: #000000; */
+/*   filter: url(#grainy); */
+/* } */
+
 @tailwind components;
 @tailwind utilities;
 

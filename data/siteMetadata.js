@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Duy Nguyen',
   headerTitle: 'duynguyen.ca',
   description:
-    'Add i18n support to your Next.js app? Build a custom React hook? Center a div? Find anything web development related. Peruse past projects, try tutorials, and search snippets. Accessible. Open Source. Forever Free.',
+    'I am a self-taught web developer who is passionate about building web applications and learning new technologies. This is a showcase of my personal and professional work. Enjoy.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://duynguyen.ca',
