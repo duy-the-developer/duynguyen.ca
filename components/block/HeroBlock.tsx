@@ -7,7 +7,7 @@ import Link from '../Link'
 
 const HeroBlock = () => {
   return (
-    <section className="grid grid-cols-6 grid-rows-6 gap-6 py-12 lg:py-16">
+    <section className="grid grid-rows-6 gap-6 py-12 lg:grid-cols-6 lg:py-16">
       <div className="col-span-3 row-span-4 space-y-16 rounded-2xl bg-stone-300 p-8 pt-16">
         <h1 className="font-serif text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Crafting digital products, brands, and experiences.
@@ -16,7 +16,7 @@ const HeroBlock = () => {
           {siteMetadata.description}
         </p>
       </div>
-      <div className="relative col-span-3 row-span-6 rounded-2xl">
+      <div className="relative col-span-3 row-span-2 row-start-1 rounded-2xl lg:row-span-6">
         <Image
           src="/static/images/duy-full-body.jpg"
           alt="duy profile picture"
