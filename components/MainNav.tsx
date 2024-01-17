@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import headerNavLinks from '@/data/headerNavLinks'
-import siteMetadata from '@/data/siteMetadata'
+// import siteMetadata from '@/data/siteMetadata'
 import { cn } from '../lib/utils'
 import Logo from './Logo'
 // import { Badge } from '@/registry/new-york/ui/badge'

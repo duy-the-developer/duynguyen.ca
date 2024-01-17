@@ -2,7 +2,6 @@ import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import NewsLetterBlock from '@/components/block/NewsLetterBlock'
 import HeroBlock from '@/components/block/HeroBlock'
-import GrainyFilter from '@/components/GrainyFilter'
 import BlogListBlock from '@/components/block/BlogListBlock'
 
 export const MAX_DISPLAY = 5

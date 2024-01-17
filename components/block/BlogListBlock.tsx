@@ -4,12 +4,13 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import { Blog } from 'contentlayer/generated'
 
-const BlogListBlock = ({ posts }) => {
+const BlogListBlock = ({ posts }: { posts: Blog[] }) => {
   return (
     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
       {!posts.length && 'No posts found.'}
-      {posts.slice(0, MAX_DISPLAY).map((post: any) => {
+      {posts.slice(0, MAX_DISPLAY).map((post) => {
         const { slug, date, title, summary, tags } = post
         return (
           <li key={slug} className="py-12">
@@ -30,7 +31,7 @@ const BlogListBlock = ({ posts }) => {
                         </Link>
                       </h2>
                       <div className="flex flex-wrap">
-                        {tags.map((tag: any) => (
+                        {tags.map((tag) => (
                           <Tag key={tag} text={tag} />
                         ))}
                       </div>
