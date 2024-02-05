@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import { Button } from './ui/button'
 import { usePathname } from 'next/navigation'
 
 import headerNavLinks from '@/data/headerNavLinks'
@@ -18,20 +19,19 @@ export default function MainNav() {
       <Link href="/" className="mr-6 flex items-center space-x-2">
         <Logo />
       </Link>
-      <nav className="flex items-center gap-6">
+      <nav className="flex items-center gap-2 ">
         {headerNavLinks
           .filter((link) => link.href !== '/')
           .map((link) => (
-            <Link
-              key={link.title}
-              href={link.href}
-              className={cn(
-                'hover:text-foreground/80 transition-colors',
-                pathname === link.href ? 'text-foreground' : 'text-foreground/60'
-              )}
+            <Button
+              asChild
+              variant="ghost"
+              className={cn('transition-all hover:shadow', pathname === link.href ? 'shadow' : '')}
             >
-              {link.title}
-            </Link>
+              <Link key={link.title} href={link.href}>
+                {link.title}
+              </Link>
+            </Button>
           ))}
       </nav>
     </div>

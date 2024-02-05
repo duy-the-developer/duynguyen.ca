@@ -1,27 +1,27 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Lora, DM_Sans } from 'next/font/google'
+import { Inter_Tight, JetBrains_Mono } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
-import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
 import Footer from '@/components/Footer'
 import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import NewHeader from '@/components/NewHeader'
+import GrainyFilter from '@/components/GrainyFilter'
 
-const lora = Lora({
+const interTight = Inter_Tight({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-lora',
+  variable: '--font-inter-tight',
 })
 
-const dmSans = DM_Sans({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-dm-sans',
+  variable: '--font-jetbrains-mono',
 })
 
 export const metadata: Metadata = {
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${lora.variable} ${dmSans.variable} scroll-smooth`}
+      className={`${interTight.variable} ${jetbrainsMono.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className="relative bg-stone-200 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-200">
+      <body className="relative min-h-screen bg-stone-200 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-200">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <div>
@@ -93,6 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Footer />
           </div>
         </ThemeProviders>
+        <GrainyFilter />
       </body>
     </html>
   )

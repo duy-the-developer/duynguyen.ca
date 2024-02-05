@@ -29,8 +29,8 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-dm-sans)', ...fontFamily.sans],
-        serif: ['var(--font-lora)', ...fontFamily.serif],
+        sans: ['var(--font-inter-tight)', ...fontFamily.sans],
+        mono: ['var(--font-jetbrains-mono)', ...fontFamily.sans],
       },
       fontSize: {
         xs: '0.64rem',
@@ -43,7 +43,7 @@ module.exports = {
         '5xl': '3.815rem', // h1
       },
       colors: {
-        primary: colors.sky,
+        primary: colors.stone,
         gray: colors.stone,
       },
       keyframes: {
@@ -76,7 +76,7 @@ module.exports = {
             },
             'h1,h2,h3,h4,h5,h6': {
               fontFamily: 'var(--font-lora)',
-              lineHeight: '1 !important',
+              lineHeight: '1',
               color: theme('colors.gray.900'),
             },
             h1: {

@@ -3,17 +3,16 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 import NewsLetterBlock from '@/components/block/NewsLetterBlock'
 import HeroBlock from '@/components/block/HeroBlock'
 import BlogListBlock from '@/components/block/BlogListBlock'
+import PrimaryFeatureBlock from '@/components/block/PrimaryFeatureBlock'
 
 export const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
   return (
     <>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <HeroBlock />
-      </div>
+      <HeroBlock />
+      <PrimaryFeatureBlock />
       <BlogListBlock posts={posts} />
-      {posts.length > MAX_DISPLAY && <NewsLetterBlock />}
       {siteMetadata.newsletter?.provider && (
         <div className="flex items-center justify-center pt-4">
           <NewsletterForm />

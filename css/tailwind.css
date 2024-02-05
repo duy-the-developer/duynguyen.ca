@@ -4,16 +4,16 @@
   @apply font-medium;
 }
 
-/* body::before, */
-/* body::after { */
-/*   content: ''; */
-/*   @apply absolute inset-0 z-[-1] h-full w-full opacity-30; */
-/* } */
-/**/
-/* body::before { */
-/*   background: #000000; */
-/*   filter: url(#grainy); */
-/* } */
+body::before,
+body::after {
+  content: '';
+  @apply pointer-events-none absolute inset-0 z-[9999] h-full w-full opacity-30;
+}
+
+body::before {
+  background: #000000;
+  filter: url(#grainy);
+}
 
 @tailwind components;
 @tailwind utilities;
@@ -27,7 +27,7 @@
 }
 
 .footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  @apply mt-6 border-t border-gray-200 pt-4 dark:border-gray-700;
 }
 
 .data-footnote-backref {

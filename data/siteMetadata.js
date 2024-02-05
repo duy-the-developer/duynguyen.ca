@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Duy Nguyen',
   headerTitle: 'duynguyen.ca',
   description:
-    'I am a self-taught web developer who is passionate about building web applications and learning new technologies. This is a showcase of my personal and professional work. Enjoy.',
+    'I am an experienced web developer who is passionate about building web applications and learning new technologies. This is a showcase of my personal and professional work. Enjoy.',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://duynguyen.ca',
