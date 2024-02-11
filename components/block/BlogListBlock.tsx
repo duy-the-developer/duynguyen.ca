@@ -57,7 +57,7 @@ const BlogListBlock = ({ posts }: { posts: Blog[] }) => {
           )
         })}
       </ul>
-      {posts.length > MAX_DISPLAY && <NewsLetterBlock />}
+      {/* {posts.length > MAX_DISPLAY && <NewsLetterBlock />} */}
     </>
   )
 }

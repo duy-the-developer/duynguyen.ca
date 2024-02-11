@@ -25,6 +25,7 @@ export default function MainNav() {
           .map((link) => (
             <Button
               asChild
+              key={link.href}
               variant="ghost"
               className={cn('transition-all hover:shadow', pathname === link.href ? 'shadow' : '')}
             >
