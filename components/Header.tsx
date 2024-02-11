@@ -7,8 +7,6 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  console.log('trigger rebuild')
-
   return (
     <header className="flex items-center justify-between border-b border-stone-300 py-10 dark:border-stone-700">
       <div>

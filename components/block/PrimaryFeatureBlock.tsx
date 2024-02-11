@@ -27,8 +27,8 @@ const features = [
 
 const PrimaryFeatureBlock = () => {
   return (
-    <GridSectionContainer className="lg:grid-rows-5">
-      <BentoChildContainer className="group col-span-full rounded-2xl lg:col-span-4 lg:row-span-2">
+    <GridSectionContainer className="grid-rows-none lg:grid-rows-5">
+      <BentoChildContainer className="group col-span-full row-span-1 rounded-2xl lg:col-span-4 lg:row-span-2 lg:row-start-1">
         <p className="text-lg leading-tight tracking-tight lg:text-3xl">
           Let me run your website, so you can run your business{' '}
           <span className="text-stone-500 transition-colors duration-300 ease-in-out group-hover:text-primary-500">
@@ -37,15 +37,15 @@ const PrimaryFeatureBlock = () => {
           </span>
         </p>
       </BentoChildContainer>
-      <BentoChildContainer className="col-span-full row-span-2 rounded-2xl lg:col-span-2">
-        <h2 className="text-4xl font-bold leading-12 tracking-tight ">
+      <BentoChildContainer className="col-span-full row-span-2 row-start-1 rounded-2xl lg:col-span-2 lg:col-start-5 lg:row-span-2">
+        <h2 className="text-4xl font-bold leading-12 tracking-tight">
           Everything You Need To Establish An Online Presence
         </h2>
       </BentoChildContainer>
       {features.map((feature, index) => (
         <BentoChildContainer
           key={index}
-          className="group col-span-2 row-span-3 flex flex-col justify-end rounded-2xl px-2 pb-2 text-2xl"
+          className="group col-span-full row-span-3 flex flex-col justify-start rounded-2xl px-2 pb-2 text-2xl lg:col-span-2 lg:justify-end"
         >
           <div className="flex items-center gap-x-2 px-6">
             <feature.icon
@@ -61,7 +61,7 @@ const PrimaryFeatureBlock = () => {
               alt=""
               width={2000}
               height={1600}
-              className="aspect-[4/5] rounded-2xl transition-transform duration-300 ease-in-out group-hover:scale-105"
+              className="aspect-video rounded-2xl object-cover transition-transform duration-300 ease-in-out group-hover:scale-105 lg:aspect-[4/5]"
             />
           </div>
         </BentoChildContainer>
