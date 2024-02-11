@@ -2,36 +2,70 @@ import React from 'react'
 import GridSectionContainer from '../GridSectionContainer'
 import BentoChildContainer from '../BentoChildContainer'
 import { Shapes, Code, RocketLaunch } from '@phosphor-icons/react/dist/ssr'
+import Image from 'next/image'
+
+const features = [
+  {
+    title: 'Design',
+    icon: Shapes,
+    imageUrl:
+      'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=2000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'Develop',
+    icon: Code,
+    imageUrl:
+      'https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+  {
+    title: 'Deploy',
+    icon: RocketLaunch,
+    imageUrl:
+      'https://images.unsplash.com/photo-1596741964346-791466b552b6?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  },
+]
 
 const PrimaryFeatureBlock = () => {
   return (
-    <GridSectionContainer>
-      <BentoChildContainer className="col-span-4 row-span-4 rounded-2xl">
-        <p className="text-3xl leading-tight">
+    <GridSectionContainer className="lg:grid-rows-5">
+      <BentoChildContainer className="group col-span-full rounded-2xl lg:col-span-4 lg:row-span-2">
+        <p className="text-lg leading-tight tracking-tight lg:text-3xl">
           Let me run your website, so you can run your business{' '}
-          <span className="text-stone-500">
+          <span className="text-stone-500 transition-colors duration-300 ease-in-out group-hover:text-primary-500">
             – From expert web development and captivating design to seamless user experiences, I've
             got you covered.
           </span>
         </p>
       </BentoChildContainer>
-      <BentoChildContainer className="col-span-2 row-span-4 rounded-2xl">
-        <h2 className="text-4xl font-bold leading-12 tracking-tight">
+      <BentoChildContainer className="col-span-full row-span-2 rounded-2xl lg:col-span-2">
+        <h2 className="text-4xl font-bold leading-12 tracking-tight ">
           Everything You Need To Establish An Online Presence
         </h2>
       </BentoChildContainer>
-      <BentoChildContainer className="col-span-2 row-span-2 flex items-center gap-x-2 rounded-2xl text-2xl">
-        <Shapes size={32} className="text-stone-500" />
-        Design
-      </BentoChildContainer>
-      <BentoChildContainer className="col-span-2 row-span-2 flex items-center gap-x-2 rounded-2xl text-2xl">
-        <Code size={32} className="text-stone-500" />
-        Develop
-      </BentoChildContainer>
-      <BentoChildContainer className="col-span-2 row-span-2 flex items-center gap-x-2 rounded-2xl text-2xl">
-        <RocketLaunch size={32} className="text-stone-500" />
-        Deploy
-      </BentoChildContainer>
+      {features.map((feature, index) => (
+        <BentoChildContainer
+          key={index}
+          className="group col-span-2 row-span-3 flex flex-col justify-end rounded-2xl px-2 pb-2 text-2xl"
+        >
+          <div className="flex items-center gap-x-2 px-6">
+            <feature.icon
+              size={32}
+              className="text-stone-500 transition-colors duration-300 ease-in-out group-hover:text-primary-500"
+              aria-hidden
+            />
+            {feature.title}
+          </div>
+          <div className="overflow-hidden rounded-2xl">
+            <Image
+              src={feature.imageUrl}
+              alt=""
+              width={2000}
+              height={1600}
+              className="aspect-[4/5] rounded-2xl transition-transform duration-300 ease-in-out group-hover:scale-105"
+            />
+          </div>
+        </BentoChildContainer>
+      ))}
     </GridSectionContainer>
   )
 }

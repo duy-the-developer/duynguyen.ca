@@ -43,7 +43,7 @@ module.exports = {
         '5xl': '3.815rem', // h1
       },
       colors: {
-        primary: colors.stone,
+        primary: colors.emerald,
         gray: colors.stone,
       },
       keyframes: {
