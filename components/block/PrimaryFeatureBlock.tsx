@@ -28,6 +28,11 @@ const features = [
 const PrimaryFeatureBlock = () => {
   return (
     <GridSectionContainer className="grid-rows-none lg:grid-rows-5">
+      <BentoChildContainer className="col-span-full row-span-2 rounded-2xl lg:col-span-2 lg:col-start-5 lg:row-span-2">
+        <h2 className="text-4xl font-bold leading-12 tracking-tight">
+          Everything You Need To Establish An Online Presence
+        </h2>
+      </BentoChildContainer>
       <BentoChildContainer className="group col-span-full row-span-1 rounded-2xl lg:col-span-4 lg:row-span-2 lg:row-start-1">
         <p className="text-lg leading-tight tracking-tight lg:text-3xl">
           Let me run your website, so you can run your business{' '}
@@ -37,17 +42,12 @@ const PrimaryFeatureBlock = () => {
           </span>
         </p>
       </BentoChildContainer>
-      <BentoChildContainer className="col-span-full row-span-2 row-start-1 rounded-2xl lg:col-span-2 lg:col-start-5 lg:row-span-2">
-        <h2 className="text-4xl font-bold leading-12 tracking-tight">
-          Everything You Need To Establish An Online Presence
-        </h2>
-      </BentoChildContainer>
       {features.map((feature, index) => (
         <BentoChildContainer
           key={index}
-          className="group col-span-full row-span-3 flex flex-col justify-start rounded-2xl px-2 pb-2 text-2xl lg:col-span-2 lg:justify-end"
+          className="group col-span-full row-span-3 flex flex-col justify-start rounded-2xl px-2 pb-2 pt-4 text-2xl lg:col-span-2 lg:justify-end"
         >
-          <div className="flex items-center gap-x-2 px-6">
+          <div className="flex items-center gap-x-2 px-6 pb-2">
             <feature.icon
               size={32}
               className="text-stone-500 transition-colors duration-300 ease-in-out group-hover:text-primary-500"
