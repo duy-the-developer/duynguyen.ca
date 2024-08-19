@@ -13,7 +13,7 @@ const FeaturedProjects = () => {
         <h2 className="text-4xl font-bold leading-12 tracking-tight">Notable Projects</h2>
       </BentoChildContainer>
       {projectsData.map((p) => (
-        <BentoChildContainer className="col-span-full p-0">
+        <BentoChildContainer key={p.title} className="col-span-full p-0">
           <Link href={p.href}>
             <GridSectionContainer className="grid-rows-none p-2 lg:grid-rows-3 lg:p-2">
               <div className="group col-span-full flex flex-col justify-start p-6 lg:col-span-4 lg:col-start-3">
