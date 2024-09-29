@@ -23,7 +23,7 @@ body::before {
 }
 
 .task-list-item {
-  @apply list-none;
+  @apply m-0 max-h-[1.6rem] list-none leading-tight;
 }
 
 .footnotes {
