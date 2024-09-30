@@ -1,9 +1,9 @@
 ---
 title: 'A Soy Dev Guide to Neovim'
 date: '2024-09-27'
-lastmod: '2024-09-27'
+lastmod: '2024-09-29'
 tags: ['nvim', 'guide', 'lua', 'satire']
-draft: true
+draft: false
 summary: 'Guide to a sane default configurations, plugins and keybindings for Neovim from a certified soy dev.'
 images: ['/static/images/twitter-card.png']
 ---
@@ -14,8 +14,8 @@ Hold on to your soy lattes because we are about to go on an ascension journey fr
 
 This guide will be broken up into two separate sections:
 
-1. The first section will cover the basics, installation of neovim and LazyVim. Readers interested in setting up their own configurations is encouraged to stop here and explore LazyVim's documentation.
-2. The second section will cover my personal configurations.
+1. The first section will cover the basics, installation of Neovim, LazyVim, and how to customize LazyVim's default plugins and configuration. Readers interested in setting up their own configurations is encouraged to stop here and explore LazyVim's documentation.
+2. At the end, I will provide my personal configuration files as reference for those who are interested in a more opinionated setup.
 
 <TOCInline toc={props.toc} exclude="Introduction" />
 
@@ -25,9 +25,7 @@ This guide will be broken up into two separate sections:
 - [ ] Homebrew for package management
 - [ ] A working internet connection
 
-## The Basics
-
-### Backup Your Configurations (Optional)
+## Backup Your Configurations (Optional)
 
 If you have an existing nvim configuration, it is recommended to back it up before proceeding.
 
@@ -36,7 +34,7 @@ mv ~/.config/nvim ~/.config/nvim.bak
 mv ~/.local/share/nvim ~/.local/share/nvim.bak
 ```
 
-### Neovim Installation
+## Neovim Installation
 
 [The official neovim github repo](https://github.com/neovim/neovim/blob/master/INSTALL.md) lists the installation instructions for various platforms. For most users, installing neovim via a package manager is the easiest way to get started. I personally use [homebrew](https://brew.sh/) as I work mainly on MacOS and Linux.
 
@@ -48,7 +46,7 @@ After installation, you can start neovim by running `nvim`.
 
 ![Vanilla Neovim](/static/images/soy-dev-nvim/1.png)
 
-### LazyVim Installation
+## LazyVim Installation
 
 [LazyVim](https://www.lazyvim.org/) is a Neovim setup, powered by [lazy.nvim](https://github.com/folke/lazy.nvim). It comes with a set of very useful plugins and configuration that are designed to work out of the box. The user experience is very similar to VSCode, with features like LSP support, syntax highlighting, and fuzzy finder.
 
@@ -79,7 +77,7 @@ We will remove the `.git` directory so that you can track your own configuration
 rm -rf .git
 ```
 
-**Finally, start neovim by running `nvim`.**
+**Start neovim by running `nvim`.**
 
 ```bash
 nvim
@@ -97,6 +95,8 @@ Hitting `q` will close the prompt and open the dashboard.
 
 ![LazyVim Dashboard](/static/images/soy-dev-nvim/4.png)
 
+**Initialize Git**
+
 Finally, let's initialize `git` in our configuration directory before playing around with the configurations.
 
 ```bash:~/.config/nvim
@@ -105,11 +105,72 @@ git add .
 git commit -m "init LazyVim"
 ```
 
-### LazyVim Default Configurations
+## Core Features
 
-At the beginning, things can be a little overwhelming, especially for those who are new to Neovim or LazyVim. So let's walkthrough some of LazyVim's core default features and break them down.
+Besides having all the basic vim motions and functionalities, LazyVim comes with a set of features that are designed to make your life easier as a developer. In this section we will cover some of the most useful features, and in the following section we will learn how to customize them.
 
-**Configuration Files**
+For a list of all available default plugins, visit [LazyVim's website](http://www.lazyvim.org/plugins)
+
+### Directory Explorer
+
+File tree explorer is managed by `neo-tree.nvim`. To open the directory explorer, hit `<leader>+e`. By default, the `<leader>` key is mapped to the space bar.
+
+![Neo-Tree](/static/images/soy-dev-nvim/5.png)
+
+Common `neo-tree` key bindings:
+
+- `j` and `k` to navigate up and down
+- `l` or `Enter` to open a file or directory
+- `h` to collapse a directory
+- `r` to rename a file or directory
+- `d` to delete a file or directory
+- `a` to add a new file (or a new directory by adding the `/` suffix)
+- `?` to open the help menu and view all available key bindings
+
+### Fuzzy Finder
+
+Fuzzy finding functionalities are provided by [`telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim). Telescope relies on ripgrep `rg` and `fd` to expose a set of commands that allow you to search for files, buffers, and more, in a neat modal UI. To open the fuzzy finder, hit `<leader>+f` (as in "find") or `<leader>+s` (as in "search"). The `which-key` plugin is also installed by default, which will show you all available key bindings.
+
+![Telescope](/static/images/soy-dev-nvim/8.png)
+
+Common `telescope` key bindings:
+
+- `<leader>+ff` to find files
+- `<leader>+fb` to find buffers
+- `<leader>+fr` to find recently opened files
+- `<leader>+sw` to search the current word under the cursor in the current working directory
+- `<leader>+sg` to search for a string in the current working directory (live grep)
+- `<leader>+st` to search for all @todo
+
+### LSP Support
+
+LSP support is provided by a combination of different plugins, which requires its own plugin manager, [`mason.nvim`](https://github.com/williamboman/mason.nvim). We could learn more about `mason.nvim` and how LSP works, but our soy lattes are getting cold so LazyVim comes with a pre-configured LSP setup that works out of the box. You can open the LSP menu by using the command `:LazyExtras`. Would you look at that, `lang.typescript` is right there in the Recommended Languages section. Let's install it by hitting `x` on the keyboard.
+
+![LazyExtras](/static/images/soy-dev-nvim/9.png)
+
+Now, if we open a `ts` file, we should see the LSP features in action. For example, we can see the type of the variable under the cursor by hitting `K` in normal mode. Or use the `g+d` key binding to jump to the definition of a symbol. As we can see below, hitting `K` reveals the function signature of the `BentoChildContainer` component.
+
+![LSP](/static/images/soy-dev-nvim/10.png)
+
+If you're interested, you can see which LSP servers are currently attached to your buffer by using the `:LspInfo` command.
+
+![LSP Info](/static/images/soy-dev-nvim/11.png)
+
+### Syntax Highlighting
+
+Syntax highlighting, indentation, and folding are all supported by [`nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter). I'll be completely honest here, I'm not smart enough to understand how it works so I'll just defer you to the official documentation. But hey, it works out of the box and that's all that matters. `nvim-treesitter` exposes a set of vim commands prefixed with `TS`, for example, `TSToggle` to toggle treesitter on and off. I wonder if we can use them for anything useful.
+
+### Git Integration
+
+Almost all core plugins in LazyVim have git integration. For example, in the directory explorer, we can see the git status of each file. We can also filter files by their git status or jump back and forth between them. In the fuzzy finder, we can search for files based on their git status. Most importantly, [`lazygit`](https://github.com/jesseduffield/lazygit) gives us a terminal git UI that we can use to stage, commit, and push changes, `lazygit ` also provides us with more advanced capabilities such as viewing diffs and resolve merge conflicts, see commit history, and more. You can open `lazygit` by pressing `<leader>+gg`.
+
+![LazyGit](/static/images/soy-dev-nvim/12.png)
+
+Hitting `?` wil bring up the help menu and display all available key bindings, based on the current menu context.
+
+## Customizing Default Configurations
+
+### Configuration Files
 
 Our config and plugins are managed by `lazy.nvim`. This guide only scratch the surface of what `lazy.nvim` has to offer. I implore curious on-lookers to peruse the [official documentation](https://www.lazyvim.org/configuration/general).
 
@@ -129,6 +190,8 @@ If we change directory into `~/.config/nvim`, we will see the following structur
 ```
 
 **IMPORTANT!!!:** Do not require `autocmds, keymaps, lazy` or `options` under `lua/config/` or `lazyvim.config` manually. LazyVim will load those files automatically.
+
+### Override Default Configurations
 
 While LazyVim does come with a set of default configurations, we can override them by editing the files in `./config` as they will be loaded after the default configurations. For example, LazyVim's default `scrolloff` is 4 lines. I prefer 8 lines, so I can override it by adding the following line to `./config/options.lua`.
 
@@ -151,11 +214,13 @@ Similarly, we can update the default vim keybindings like so:
 + vim.keymap.set("n", "<C-A>", "gg<S-v>G")
 ```
 
+### Override Default Plugins
+
 Finally, we can inject custom configuration for default plugins by adding new files to the `./lua/plugins` directory. For example, by default, `neo-tree.nvim`, our directory explorer and `netrw` replacement, hides filtered items such as `.git`, `node_modules`, or other files and directories listed in your `.gitignore`.
 
 ![Default Neo-Tree Behavior](/static/images/soy-dev-nvim/6.png)
 
-I am not a fan of this behavior, and often ends up having to toggle this feature off every time I open a new `nvim` instance. Let's change that by adding a new file `./lua/plugins/neo-tree.lua` with the following content:
+I am not a fan of this behavior, and often ends up having to toggle this feature off every time I open a new `nvim` instance. If we head over to the [`neo-tree.nvim` github repo](https://github.com/nvim-neo-tree/neo-tree.nvim?tab=readme-ov-file#quickstart), we can see that we can change this behavior by setting `filtered_items.visible` to `true`. Let's change that by adding a new file `./lua/plugins/neo-tree.lua` with the following content:
 
 ```bash:~/.config/nvim/
 nvim ./lua/plugins/neo-tree.lua
@@ -174,23 +239,90 @@ nvim ./lua/plugins/neo-tree.lua
 + }
 ```
 
-#### Directory Exploration
+### Adding New Plugins
 
-Hitting `<leader> e` will open the file explorer on the left side of the screen at the root of your project.
+We can also add new plugins not available in LazyVim by default. We can do this by adding a new file to the `./lua/plugins` directory. As an example, let's add the [`gruvbox.nvim`](https://github.com/ellisonleao/gruvbox.nvim) colorscheme plugin. Simply create a new file called `gruvbox.lua` in the `./lua/plugins` directory with the following content:
 
-**Note:** Neovim's `<leader>` key is mapped to the space bar by default.
+```bash:~/.config/nvim/
+nvim ./lua/plugins/gruvbox.lua
+```
 
-This feature is provided by the [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) plugin. The default common keymaps for the file explorer are:
+```diff-lua:./lua/plugins/gruvbox.lua
++ return {
++   "ellisonleao/gruvbox.nvim", -- name of the plugin (usually formatted as github <author_slug>/<repo_slug>)
++   lazy = false, -- we can lazy load any plugins we do not need right away by setting this to true
++   priority = 1000, -- as well as the loading priority
++   config = true,
++
++   -- add your config below
++   -- refer to https://github.com/ellisonleao/gruvbox.nvim
++   -- for a list of all available customization options
++   opts = {},
++ }
+```
 
-- `j` and `k` to navigate up and down
-- `w` or `Enter` to open the selected file or directory
-- `a` to add a new file (or a directory if the name is suffixed with `/`)
-- `Shift + a` to add a new directory
-- `Shift + h` to toggle hidden files
-- `r` to rename a file or directory
+Then, restart Neovim and run `:colorscheme gruvbox` to apply the new colorscheme. Look at all that ~~turd brown~~ chocolatey goodness.
 
-The full list of keymaps can be found in the official github repo provided above.
+![Gruvbox Colorscheme](/static/images/soy-dev-nvim/7.png)
 
-![File Explorer](/static/images/soy-dev-nvim/5.png)
+Optionally, instead of just returning one plugin per file, we can return a table of plugins. This is useful when we want to group related plugins together. For example, I have a set of two or three different colorscheme I enjoy switching around every so often, instead of having multiple files for each plugin, let's create a single `colorscheme.lua` inside the `./lua/plugins` directory.
 
-## My Configurations
+```diff-lua:~/.config/nvim/lua/plugins/colorscheme.lua
+return {
+  {
+    "ellisonleao/gruvbox.nvim",
+    lazy = true,
+    priority = 1000,
+  }
+  {
+    "cranberry-clockworks/coal.nvim",
+    lazy = true,
+    priority = 1000,
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = function()
+      return {
+        transparent = true,
+      }
+    end,
+  },
+  {
+    -- here we call LazyVim to load the default colorscheme we want to use on startup
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "coal",
+    },
+  },
+}
+```
+
+### Disabling Default Plugins
+
+Finally if you wish to disale a default LazyVim plugin entirely, we can do so by setting `enabled = false`. I'll use `folke/flash.nvim` as an example. It is a very useful plugin, but I prefer to use the built-in `/` search highlight feature. Using what we learned above, let's create a new file `disabled.lua` inside the `./lua/plugins` directory, this way we can group all our disabled plugins together.
+
+```diff-lua:~/.config/nvim/lua/plugins/flash.lua
+return {
+  {
+    "folke/flash.nvim",
+    enabled = false,
+  },
+  -- add more disabled plugins here
+}
+```
+
+## Summary
+
+If you have been following the guide so far, you have now learned how to:
+
+- Install Neovim and LazyVim
+- Use core features
+- Customize LazyVim's default configurations
+
+Armed with this knowledge, you are ready to explore and customize your Neovim experience. Now that's a development environment with a bit more neck hair.
+
+### My Configurations
+
+This guide is long enough as is, so I will not go into detail about my personal configurations. You can find them on my [GitHub repository](https://github.com/duy-the-developer/lazyvim-config)
