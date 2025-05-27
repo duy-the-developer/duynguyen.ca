@@ -43,7 +43,7 @@ const HeroBlock = () => {
           <span className="transition-all ease-in-out group-hover:scale-105">Let's chat!</span>
         </Link>
       </Button>
-      <div className="col-span-2 flex h-full items-center justify-center overflow-hidden rounded-2xl bg-white text-2xl dark:bg-black lg:col-span-1">
+      <div className="col-span-2 flex h-full items-center justify-center overflow-hidden rounded-2xl bg-stone-100 text-2xl dark:bg-black lg:col-span-1">
         <ThemeToggle />
       </div>
     </GridSectionContainer>

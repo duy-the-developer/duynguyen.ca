@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
       <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <body className="relative min-h-screen bg-stone-100 text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-200">
+      <body className="bg-grey-100 relative min-h-screen text-stone-900 antialiased dark:bg-stone-950 dark:text-stone-200">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
           <div>

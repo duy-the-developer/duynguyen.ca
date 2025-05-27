@@ -15,7 +15,7 @@ import { Button } from './ui/button'
 export default function NewHeader() {
   return (
     <SectionContainer className="sticky top-4 z-50">
-      <header className="supports-[backdrop-filter]:bg-background/60 flex h-14 w-full items-center rounded-2xl bg-white/50 px-8 backdrop-blur-xl dark:bg-stone-800/50 dark:shadow-stone-900">
+      <header className="supports-[backdrop-filter]:bg-background/60 flex h-14 w-full items-center rounded-2xl bg-white/50 px-8 backdrop-blur-xl dark:bg-stone-950/50 dark:shadow-stone-900">
         <MainNav />
         <MobileNav />
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
