@@ -17,7 +17,7 @@ export const ButtonToLiveProject = ({ href }: { href: string }) => {
     <Button
       onClick={navigateLiveSite}
       variant={'link'}
-      className="relative aspect-square h-10 w-10 overflow-hidden rounded-full bg-white p-2 transition-all duration-200 ease-linear group-hover:bg-primary-500 dark:bg-stone-950 dark:text-white lg:h-16 lg:w-16"
+      className="relative aspect-square h-10 w-10 overflow-hidden rounded-full bg-transparent p-2 transition-all duration-200 ease-linear group-hover:bg-primary-500 dark:bg-stone-950 dark:text-white lg:h-16 lg:w-16"
     >
       <ArrowUpRight
         size={32}

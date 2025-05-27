@@ -1,6 +1,6 @@
 import siteMetadata from '@/data/siteMetadata'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
-import NewsLetterBlock from '@/components/block/NewsLetterBlock'
+// import NewsLetterBlock from '@/components/block/NewsLetterBlock'
 import HeroBlock from '@/components/block/HeroBlock'
 import BlogListBlock from '@/components/block/BlogListBlock'
 import PrimaryFeatureBlock from '@/components/block/PrimaryFeatureBlock'

@@ -10,13 +10,15 @@ const FeaturedProjects = () => {
   return (
     <GridSectionContainer className="grid-rows-none">
       <BentoChildContainer className="col-span-full">
-        <h2 className="text-4xl font-bold leading-12 tracking-tight">Notable Projects</h2>
+        <h2 className="text-4xl font-bold leading-12 tracking-tight">
+          Projects I've Contributed To
+        </h2>
       </BentoChildContainer>
       {projectsData.map((p) => (
-        <BentoChildContainer key={p.title} className="col-span-full p-0">
-          <Link href={p.href}>
+        <BentoChildContainer key={p.title} className="group col-span-full p-0">
+          <Link href={p.href} target="_blank">
             <GridSectionContainer className="grid-rows-none p-2 lg:grid-rows-3 lg:p-2">
-              <div className="group col-span-full flex flex-col justify-start p-6 lg:col-span-4 lg:col-start-3">
+              <div className="col-span-full flex flex-col justify-start p-6 lg:col-span-4 lg:col-start-3">
                 <h3 className="mb-4 flex items-center justify-between text-lg leading-tight tracking-tight lg:text-3xl">
                   {p.title}
                   {p.hrefLive && p.hrefLive !== '' && <ButtonToLiveProject href={p.hrefLive} />}
