@@ -11,7 +11,9 @@ const HeroBlock = () => {
     <GridSectionContainer>
       <div className="col-span-full row-span-2 space-y-8 rounded-2xl bg-stone-300 p-8 pt-16 dark:bg-stone-800 lg:col-span-3 lg:row-span-4 lg:space-y-12">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Web Developer, Digital Partner, Problem Solver.
+          {'Web Developer\n'}
+          {'Digital Partner\n'}
+          {'Problem Solver\n'}
         </h1>
         <p className="max-w-3xl text-base leading-7 text-gray-600 dark:text-gray-400 lg:w-1/2">
           {siteMetadata.description}
